@@ -5,7 +5,6 @@ server:
       key-store: classpath:com.ecfghjp.com.p12
       key-store-type: pkcs12
       key-alias: selfsigned_localhost_sslserver
-      key-store-password: himAchAl@123
 
 spring:
    application:
@@ -22,10 +21,3 @@ eureka:
    client:
       register-with-eureka: true
       fetch-registry: true
-      service-url:
-         defaultZone: http://localhost:8761/eureka/
-   instance:
-      hostname: localhost
-
-         
-
