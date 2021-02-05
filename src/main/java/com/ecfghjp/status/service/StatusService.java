@@ -15,5 +15,4 @@ public interface StatusService {
 	List<StatusDTO> findStatus(Status status);
 
 	
-	StatusDTO updateStatus(Status status);
 }

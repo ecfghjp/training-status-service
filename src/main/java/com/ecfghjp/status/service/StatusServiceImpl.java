@@ -1,6 +1,8 @@
 package com.ecfghjp.status.service;
 
 import java.lang.invoke.MethodHandles;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,16 +54,28 @@ public class StatusServiceImpl implements StatusService {
 		ModelMapper modelMapper = new ModelMapper();
 		List<StatusDTO> statusDTOs = statusReturned
 										.stream()
-										.map(entity -> modelMapper.map(entity,StatusDTO.class))
+										.map(entity -> {
+											int points = pointsGathehered(entity);
+											entity.setPoints(points);
+											return modelMapper.map(entity,StatusDTO.class);
+										})
 										.collect(Collectors.toList());
 		return statusDTOs;
 	}
+	
+	private int pointsGathehered(Status status) {
+		LocalDateTime startDateTime = status.getStartDateTime();
+		LocalDateTime finishDateTime = status.getFinishDateTime();
+		Duration duration = finishDateTime!=null ? Duration.between(finishDateTime, startDateTime):null;
+		
+		if(null==duration) {
+			return 0;
+		}
+		
+		long numberOfDays = duration.toDays();
+		return (int) (10*numberOfDays);
+		
 
-	@Override
-	public StatusDTO updateStatus(Status status) {
-		logger.info("Inside status service method update status");
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

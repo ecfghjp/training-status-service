@@ -1,6 +1,6 @@
 package com.ecfghjp.status.entities.service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,17 +17,21 @@ import lombok.ToString;
 public class StatusDTO {
 
 	private Long statusId;
+	
+	private int attempt;
 
 	private String trainingId;
 
 	private String employeeShortName;
 
-	private Date startDateTime;
+	private LocalDateTime startDateTime;
+	
+	private LocalDateTime lastEditedDateTime;
 
-	private Date lastEditedDateTime;
-
-	private Date finishDateTime;
+	private LocalDateTime finishDateTime;
 
 	private int points;
+	
+	private boolean endTraining;
 
 }
