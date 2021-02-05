@@ -1,10 +1,5 @@
 server:
    port: 7443
-   ssl:
-      enabled: true
-      key-store: classpath:com.ecfghjp.com.p12
-      key-store-type: pkcs12
-      key-alias: selfsigned_localhost_sslserver
 
 spring:
    application:
